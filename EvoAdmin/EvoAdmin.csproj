@@ -78,6 +78,8 @@
     <Content Include="css\custom.css" />
     <Content Include="EditProfile.aspx" />
     <Content Include="fonts\icons\rxicons.svg" />
+    <Content Include="images\delete.png" />
+    <Content Include="images\edit.png" />
     <Content Include="images\favicon\android-icon-144x144.png" />
     <Content Include="images\favicon\android-icon-192x192.png" />
     <Content Include="images\favicon\android-icon-36x36.png" />
@@ -131,6 +133,7 @@
     <Content Include="images\rxicons-v1.0\Read Me.txt" />
     <Content Include="images\rxicons-v1.0\style.css" />
     <Content Include="images\user-profile.jpg" />
+    <Content Include="images\view.png" />
     <Content Include="js\aos.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\custom.js" />
