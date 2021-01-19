@@ -29,10 +29,10 @@
                     </div>
                 <div class="clearfix"></div>
                                     <div class="col m6">
-                                        <asp:Button ID="btnSearch" Text="Search" runat="server" OnClick="btnSearch_Click" />
+                                        <asp:Button ID="btnSearch" Text="Search" class="submit-bttn bttn bttn-primary" runat="server" OnClick="btnSearch_Click" />
                                     </div>
                                     <div class="col m6">
-                                        <asp:Button ID="btnClear" Text="Clear" runat="server" OnClick="btnClear_Click" />
+                                        <asp:Button ID="btnClear" Text="Clear" class="submit-bttn bttn bttn-primary" runat="server" OnClick="btnClear_Click" />
                                     </div>
                                 </div>
             </div>

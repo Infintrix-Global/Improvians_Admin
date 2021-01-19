@@ -11,7 +11,15 @@ namespace EvoAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["LoginID"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            if (!IsPostBack)
+            {
 
+                lblEmpName.Text = Session["EmployeeName"].ToString();
+            }
         }
     }
 }

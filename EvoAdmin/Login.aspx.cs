@@ -35,7 +35,7 @@ namespace EvoAdmin
 
                 Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Login", "alert('Enter Correct User Name or Password')", true);
             }
-            else
+            else if(_dtLogin.Rows[0]["RoleID"].ToString()=="4")
             {
                 //string x = txtimgcode.Text;
                 //string y = Session["CaptchaImageText"].ToString();
@@ -71,6 +71,11 @@ namespace EvoAdmin
                 //this.txtimgcode.Text = "";
 
 
+            }
+
+            else
+                {
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Login", "alert('Enter Correct User Name or Password')", true);
             }
         }
     }

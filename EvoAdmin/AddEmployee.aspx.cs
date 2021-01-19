@@ -45,11 +45,11 @@ namespace EvoAdmin
 
         public void BindFacility()
         {
-            ddlFacility.DataSource = objCommon.GetFacilityMaster();
-            ddlFacility.DataTextField = "FacilityName";
-            ddlFacility.DataValueField = "FacilityID";
-            ddlFacility.DataBind();
-            ddlFacility.Items.Insert(0, new ListItem("--- Select ---", "0"));
+            chkFacility.DataSource = objCommon.GetFacilityMaster();
+            chkFacility.DataTextField = "FacilityName";
+            chkFacility.DataValueField = "FacilityID";
+            chkFacility.DataBind();
+            //ddlFacility.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         protected void btAdd_Click(object sender, EventArgs e)
@@ -92,14 +92,14 @@ namespace EvoAdmin
 
                         lblmsg.Text = "Employee Added ";
                         lblmsg.ForeColor = System.Drawing.Color.Green;
-                        //foreach (ListItem item in chkDepartment.Items)
-                        //{
-                        //    if (item.Selected)
-                        //    {
-                        //        objCommon.AddEmployeeDepartment(_isInserted, item.Value);
-                        //    }
-                        //}
-                        objCommon.AddEmployeeFacility(_isInserted, ddlFacility.SelectedValue);
+                        foreach (ListItem item in chkFacility.Items)
+                        {
+                            if (item.Selected)
+                            {
+                                objCommon.AddEmployeeFacility(_isInserted, item.Value);
+                            }
+                        }
+                        // objCommon.AddEmployeeFacility(_isInserted, ddlFacility.SelectedValue);
                         Response.Redirect("~/ViewEmployee.aspx");
                         btclear_Click(sender, e);
                     }

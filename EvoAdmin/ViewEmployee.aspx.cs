@@ -18,7 +18,8 @@ namespace EvoAdmin
         {
             if (!IsPostBack)
             {
-               
+                BindDepartment();
+                BindRole();
                 GetEmployeeList();
             }
         }
@@ -31,6 +32,24 @@ namespace EvoAdmin
             count.Text = "Number of Employees =" + dt.Rows.Count;
             ViewState["dirState"] = dt;
             ViewState["sortdr"] = "Asc";
+        }
+
+        public void BindDepartment()
+        {
+            ddlDepartment.DataSource = objCommon.GetDepartmentMaster();
+            ddlDepartment.DataTextField = "DepartmentName";
+            ddlDepartment.DataValueField = "DepartmentID";
+            ddlDepartment.DataBind();
+            ddlDepartment.Items.Insert(0, new ListItem("--- Select ---", "0"));
+        }
+
+        public void BindRole()
+        {
+            ddlDesignation.DataSource = objCommon.GetRoleMaster();
+            ddlDesignation.DataTextField = "RoleName";
+            ddlDesignation.DataValueField = "RoleID";
+            ddlDesignation.DataBind();
+            ddlDesignation.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
 
