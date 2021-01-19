@@ -381,6 +381,22 @@ namespace EvoAdmin
             return ds.Tables[0];
         }
 
+        public DataTable GetFacilityMaster()
+        {
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@mode", 4);
+                ds = objGeneral.GetDatasetByCommand_SP("GET_Common");
+            }
+            catch (Exception ex)
+            {
+            }
+            return ds.Tables[0];
+        }
+
+
         public int RemoveEmployee(int employeeID)
         {
             int _isDeleted = -1;
@@ -395,6 +411,23 @@ namespace EvoAdmin
 
             }
             return _isDeleted;
+        }
+
+        public int AddEmployeeFacility(int employeeID, string FacilityID)
+        {
+            int _isInserted = -1;
+            try
+            {
+
+                General objGeneral = new General();
+                objGeneral.AddParameterWithValueToSQLCommand("@EmployeeID", employeeID);
+                objGeneral.AddParameterWithValueToSQLCommand("@FacilityID", FacilityID);
+                _isInserted = objGeneral.GetExecuteNonQueryByCommand_SP("SP_AddEmployeeFacility");
+            }
+            catch (Exception ex)
+            {
+            }
+            return _isInserted;
         }
     }
 

@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddEmployee.aspx" />
+    <Content Include="AdminDashBoard.aspx" />
     <Content Include="css\all.min.css" />
     <Content Include="css\aos.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -109,12 +110,14 @@
     <Content Include="images\icons\icon-account.svg" />
     <Content Include="images\icons\icon-dashboard.svg" />
     <Content Include="images\icons\icon-dropdown.svg" />
+    <Content Include="images\icons\icon-email.svg" />
     <Content Include="images\icons\icon-facility-probability.svg" />
     <Content Include="images\icons\icon-germination-seed.svg" />
     <Content Include="images\icons\icon-greenhouse-control.svg" />
     <Content Include="images\icons\icon-labor-efficiency.svg" />
     <Content Include="images\icons\icon-mytasks.svg" />
     <Content Include="images\icons\icon-password.svg" />
+    <Content Include="images\icons\icon-phone.svg" />
     <Content Include="images\icons\icon-plant-quality.svg" />
     <Content Include="images\icons\icon-search.svg" />
     <Content Include="images\icons\icon-site-capacity.svg" />
@@ -126,6 +129,8 @@
     <Content Include="images\login-bg.jpg" />
     <Content Include="images\logo-vertical.svg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\no-photo.jpg" />
+    <Content Include="images\profile-picture.jpg" />
     <Content Include="images\rxicons-v1.0\demo-files\demo.css" />
     <Content Include="images\rxicons-v1.0\demo-files\demo.js" />
     <Content Include="images\rxicons-v1.0\demo.html" />
@@ -140,6 +145,8 @@
     <Content Include="js\jquery.min.js" />
     <Content Include="js\popper.min.js" />
     <Content Include="js\slick.min.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="ViewEmployee.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +156,13 @@
     </Compile>
     <Compile Include="AddEmployee.aspx.designer.cs">
       <DependentUpon>AddEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashBoard.aspx.cs">
+      <DependentUpon>AdminDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashBoard.aspx.designer.cs">
+      <DependentUpon>AdminDashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminMaster.Master.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
@@ -170,7 +184,21 @@
     <Compile Include="EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewEmployee.aspx.cs">
+      <DependentUpon>ViewEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewEmployee.aspx.designer.cs">
+      <DependentUpon>ViewEmployee.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fa\fa-brands-400.ttf" />

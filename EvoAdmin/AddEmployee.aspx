@@ -3,46 +3,68 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <asp:ScriptManager ID="SrciptManager1" runat="server"></asp:ScriptManager>
-    <div class="main">
-        <div class="site__container">
-            <h2>Add Employee</h2>
+    <div class="admin__content">
+                    <div class="container-fluid">
+            <h1 class="text-center text-sm-left">Add Employee</h1>
+
+                        <hr />
             <!-- BEGIN FORM-->
             <div class="filter__row d-flex">
                 
 
-                <asp:UpdatePanel ID="upEmployee" runat="server">
-                    <ContentTemplate>
+            
 
                         <asp:Label ID="lblmsg" runat="server"></asp:Label>
-                   
-                        <div class="row">
-                            <div class="col m3">
-                                <label>Mobile Number</label>
+                  
+                            <div class="row justify-content-lg-center">
+                              
+                                <div class="col-md-6 col-xl-5 order-md-1 pt-md-5">
+                                           
+                            <label class="custom-file-label text-center"><h4>Profile Image</h4></label>
 
-                                        <asp:TextBox ID="txtMobile" runat="server" class="form-control" placeholder="Enter Mobile" TabIndex="2"></asp:TextBox>
-                                        <span class="help-block">
+                                     <div class="profile-picture">
+                                            <asp:Image ID="ImageProfile" runat="server" Height="200px" Width="200px" GenerateEmptyAlternateText="True" ImageUrl="~/Images/no-photo.jpg" />
+                            </div>
+
+                                    <asp:FileUpload ID="FileUpProfile"  runat="server" ClientIDMode="Static" />
+                                    
+                                            <asp:Button ID="btnProfile" CssClass="bttn bttn-primary bttn-action" CausesValidation="False"
+                                                runat="server" Text="Upload" OnClick="btnProfile_Click" />
+                                            <asp:Label ID="Label2" runat="server" Text="(Format supported:jpeg,png,jpg)" ForeColor="Red"></asp:Label>
+                                            <asp:Label ID="lblProfile" runat="server" Visible="true"></asp:Label>
+                                       <div class="clearfix"></div>
+                          
+                       
+                                  </div>
+
+                                 
+                                <div class="clearfix"></div>
+
+                               <div class="col-md-6 col-xl-5">
+                                <label> <h4>Mobile Number</h4> </label>   
+
+                                        <asp:TextBox ID="txtMobile" runat="server" class="input__control input__control-icon phone" placeholder="Enter your Mobile No. here" TabIndex="2"></asp:TextBox>
+                                   
+                                    <span class="help-block">
                                             <asp:RequiredFieldValidator ID="RequiredMobile" runat="server" ControlToValidate="txtMobile" ErrorMessage="Please Enter Mobile Number" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                             <asp:RegularExpressionValidator ID="RegularExpressionValidatorMobile" runat="server" ControlToValidate="txtMobile" Display="Dynamic" ErrorMessage="Please enter valid Mobile Number" ForeColor="Red" SetFocusOnError="True" ValidationExpression="[0-9]{10}" ValidationGroup="e"></asp:RegularExpressionValidator>
                                         </span>
-                                   
-                            </div>
-                            <div class="col m3">
-                                <label>Name</label>
-                                        <asp:TextBox ID="txtName" class="form-control" placeholder="Name" TabIndex="3" runat="server"></asp:TextBox>
+                                     <div class="clearfix"></div>
+                          
+                                <label> <h4>User Name</h4></label>
+                                        <asp:TextBox ID="txtName" class="input__control input__control-icon username" placeholder="Enter your user name" TabIndex="3" runat="server"></asp:TextBox>
                                         <span class="help-block">
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtName" ValidationGroup="e"
                                                 SetFocusOnError="true" ErrorMessage="Please Enter Name" ForeColor="Red"></asp:RequiredFieldValidator>
-                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator27" runat="server" ValidationGroup="e"
+                                         <%--   <asp:RegularExpressionValidator ID="RegularExpressionValidator27" runat="server" ValidationGroup="e"
                                                 ForeColor="Red" ErrorMessage="Only text is allowed" Display="Dynamic" ControlToValidate="txtName"
                                                 SetFocusOnError="True" ValidationExpression="^\s*[a-zA-Z,\s]+\s*$">
-                                            </asp:RegularExpressionValidator>
+                                            </asp:RegularExpressionValidator>--%>
                                         </span>
-                                    
-                            </div>
-
-                            <div class="col m3">
-                                <label>Email</label>
-                                        <asp:TextBox ID="txtEmail" class="form-control" placeholder="Email ID" TabIndex="4" runat="server"></asp:TextBox>
+                                      <div class="clearfix"></div>
+                          
+                                <label> <h4>Email ID</h4></label>
+                                        <asp:TextBox ID="txtEmail" class="input__control input__control-icon email" placeholder="Enter your email here" TabIndex="4" runat="server"></asp:TextBox>
                                         <asp:Label ID="lblStatus" runat="server" ForeColor="red"></asp:Label>
                                         <span class="help-block">
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmail" ValidationGroup="e"
@@ -55,8 +77,8 @@
                                 
                             </div>
 
-                            <div class="col m3">
-                                <label>Department</label>
+                            <div class="col-md-6 col-xl-5 order-md-1">
+                                <label><h4>Department</h4></label>
                                             <asp:DropDownList ID="ddlDepartment" runat="server" class="custom__dropdown robotomd" TabIndex="4"></asp:DropDownList>
                                      
                                         <span class="help-block">
@@ -67,136 +89,54 @@
                             </div>
                      
 
-                            <div class="col m3">
-                              <label>Designation</label>
+                             <div class="col-md-6 col-xl-5 order-md-1">
+                              <label><h4>Designation</h4></label>
                                         <asp:DropDownList ID="ddlDesignation" runat="server" class="custom__dropdown robotomd" TabIndex="5"></asp:DropDownList>
                                         <span class="help-block">
                                        -     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ddlDesignation" InitialValue="0" ErrorMessage="Please Select Role" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
                                         </span>
                                  
                             </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div class="row">
-                         <div class="col m8">
-                             <label>Profile Image</label>
-                                    <asp:FileUpload ID="FileUpProfile" runat="server" ClientIDMode="Static" />
-                                    
-                                            <asp:Button ID="btnProfile" CssClass="bttn bttn-primary bttn-action" CausesValidation="False"
-                                                runat="server" Text="Upload" OnClick="btnProfile_Click" />
-                                            <asp:Label ID="Label2" runat="server" Text="(Format supported:jpeg,png,jpg)" ForeColor="Red"></asp:Label>
-                                            <asp:Label ID="lblProfile" runat="server" Visible="true"></asp:Label>
-                                   
+                  
+ <div class="col-md-6 col-xl-5 order-md-1">
+                              <label><h4>Facility</h4></label>
+                                        <asp:DropDownList ID="ddlFacility" runat="server" class="custom__dropdown robotomd" TabIndex="6"></asp:DropDownList>
+                                        <span class="help-block">
+                                       -     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ddlFacility" InitialValue="0" ErrorMessage="Please Select Role" ForeColor="Red" SetFocusOnError="true" ValidationGroup="e"></asp:RequiredFieldValidator>
+                                        </span>
+                                 
                             </div>
-                                        <div class="col m3">
-                       
-                                            <asp:Image ID="ImageProfile" runat="server" Height="80px" Width="80px" GenerateEmptyAlternateText="True" ImageUrl="~/Images/no-photo.jpg" />
-                                  </div>
+                  
+                    
+                    <div class="clearfix"></div>
+                     
+                           <div class="col-12 text-center order-md-1">
                               
-                               <div class="clearfix"></div>
+
+                                    <asp:Button ID="btAdd" runat="server" Text="Add" TabIndex="10" class="submit-bttn bttn bttn-primary" ClientIDMode="Static" OnClick="btAdd_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true';" ValidationGroup="e" />
+
+                               
                             </div>
-
-                        <div class="row" align="center">
-                            <div class="col m6">
-                                <div class="form-group form-md-line-input ">
-
-                                    <asp:Button ID="btAdd" runat="server" Text="Add" TabIndex="10" CssClass="bttn bttn-primary bttn-action" ClientIDMode="Static" OnClick="btAdd_Click" UseSubmitBehavior="false" OnClientClick="this.disabled='true';" ValidationGroup="e" />
-
-                                </div>
-                            </div>
-                            <div class="col m6">
+                           <%-- <div class="col m6">
                                 <div class="form-group form-md-line-input ">
 
                                     <asp:Button ID="btclear" runat="server" Text="Clear" TabIndex="11" CssClass="bttn bttn-primary bttn-action" ClientIDMode="Static" OnClick="btclear_Click" />
 
                                 </div>
-                            </div>
+                            </div>--%>
 
                         
+                           <div class="clearfix"></div>
+                      
+                        <br />
+                        <br />
+                <div class="clearfix"></div>
+                   
+                      
 
                         </div>
 
-                        <br />
-                        <br />
-                        <div class="row">
-                            <div class=" col m12">
-                                <div class="portlet light ">
-                                    <asp:Label runat="server" Text="" ID="count"></asp:Label>
-                                    <div class="portlet-body">
-                                        <div class="data__table">
-                                            <asp:GridView ID="GridEmployee" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-                                                class="striped" OnRowCommand="GridEmployee_RowCommand" AllowSorting="true" OnPageIndexChanging="GridEmployee_PageIndexChanging"
-                                                GridLines="None" OnSorting="GridEmployee_Sorting" 
-                                                ShowHeaderWhenEmpty="True" Width="100%">
-                                                <Columns>
-
-                                                    <asp:TemplateField HeaderText="Sr. No." ItemStyle-Width="10%" HeaderStyle-CssClass="autostyle2">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label4" runat="server" Text="<%#Container.DataItemIndex + 1%>"></asp:Label>
-                                                            <asp:Label ID="lblID" runat="server" Text='<%# Eval("ID")  %>' Visible="false"></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="Department" HeaderStyle-CssClass="autostyle2">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label1" runat="server" Text='<%# Eval("DepartmentName")  %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="Name" HeaderStyle-CssClass="autostyle2" SortExpression="EmployeeName">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label7" runat="server" Text='<%# Eval("EmployeeName")  %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="Contact Number" HeaderStyle-CssClass="autostyle2">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label8" runat="server" Text='<%# Eval("Mobile")  %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Email" HeaderStyle-CssClass="autostyle2">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label9" runat="server" Text='<%# Eval("Email")  %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="Role" HeaderStyle-CssClass="autostyle2" SortExpression="RoleName">
-                                                        <ItemTemplate>
-                                                            <asp:Label ID="Label10" runat="server" Text='<%# Eval("RoleName")  %>'></asp:Label>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="" HeaderStyle-CssClass="autostyle2">
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="imgEdit" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="EditProfile" ImageUrl="~/images/edit.png" AlternateText="edit" ToolTip="edit"></asp:ImageButton>
-                                                            <asp:ImageButton ID="imgDelete" runat="server" CommandArgument='<%# Eval("ID")  %>' CommandName="RemoveProfile" ImageUrl="~/images/delete.png" AlternateText="delete" ToolTip="delete"  OnClientClick="return confirm('Are you sure you want to remove this employee?');"></asp:ImageButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-
-
-                                                </Columns>
-
-                                                <PagerStyle CssClass="paging" HorizontalAlign="Right" />
-                                                <PagerSettings Mode="NumericFirstLast" />
-                                                <EmptyDataTemplate>
-                                                    No Record Available
-                                                </EmptyDataTemplate>
-                                            </asp:GridView>
-
-
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                                   
             </div>
         </div>
     </div>

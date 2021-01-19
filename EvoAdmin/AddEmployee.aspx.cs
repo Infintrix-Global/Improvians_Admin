@@ -21,7 +21,7 @@ namespace EvoAdmin
             {
                 BindDepartment();
                 BindRole();
-                GetEmployeeList();
+                BindFacility();
             }
         }
 
@@ -31,7 +31,7 @@ namespace EvoAdmin
             ddlDepartment.DataTextField = "DepartmentName";
             ddlDepartment.DataValueField = "DepartmentID";
             ddlDepartment.DataBind();
-
+            ddlDepartment.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         public void BindRole()
@@ -40,18 +40,16 @@ namespace EvoAdmin
             ddlDesignation.DataTextField = "RoleName";
             ddlDesignation.DataValueField = "RoleID";
             ddlDesignation.DataBind();
-
+            ddlDesignation.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
-        public void GetEmployeeList()
+        public void BindFacility()
         {
-            DataTable dt = new DataTable();
-            dt = objCommon.GetAllEmployeeList();
-            GridEmployee.DataSource = dt;
-            GridEmployee.DataBind();
-            count.Text = "Number of Employees =" + dt.Rows.Count;
-            ViewState["dirState"] = dt;
-            ViewState["sortdr"] = "Asc";
+            ddlFacility.DataSource = objCommon.GetFacilityMaster();
+            ddlFacility.DataTextField = "FacilityName";
+            ddlFacility.DataValueField = "FacilityID";
+            ddlFacility.DataBind();
+            ddlFacility.Items.Insert(0, new ListItem("--- Select ---", "0"));
         }
 
         protected void btAdd_Click(object sender, EventArgs e)
@@ -94,7 +92,15 @@ namespace EvoAdmin
 
                         lblmsg.Text = "Employee Added ";
                         lblmsg.ForeColor = System.Drawing.Color.Green;
-                       
+                        //foreach (ListItem item in chkDepartment.Items)
+                        //{
+                        //    if (item.Selected)
+                        //    {
+                        //        objCommon.AddEmployeeDepartment(_isInserted, item.Value);
+                        //    }
+                        //}
+                        objCommon.AddEmployeeFacility(_isInserted, ddlFacility.SelectedValue);
+                        Response.Redirect("~/ViewEmployee.aspx");
                         btclear_Click(sender, e);
                     }
                 }
@@ -163,19 +169,16 @@ namespace EvoAdmin
                     {
                         try
                         {
-
-
-
-                            string Imgname = ddlDesignation.SelectedItem.Text + "_" + txtName.Text;
+                            string Imgname = newfile;
 
                             string path = Server.MapPath(@"~\EmployeeProfile\");
                             System.IO.Directory.CreateDirectory(path);
-                            FileUpProfile.SaveAs(path + @"\" + Imgname + ext);
+                            FileUpProfile.SaveAs(path + @"\" + Imgname );
 
-                            ImageProfile.ImageUrl = @"~\EmployeeProfile\" + Imgname + ext;
+                            ImageProfile.ImageUrl = @"~\EmployeeProfile\" + Imgname ;
                             ImageProfile.Visible = true;
                             lblProfile.Visible = true;
-                            lblProfile.Text = Imgname + ext;
+                            lblProfile.Text = Imgname ;
 
                             //  IdentityPolicyImageUrl = Imgname + ext;
 
@@ -198,51 +201,6 @@ namespace EvoAdmin
 
         }
 
-        protected void GridEmployee_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-           
-            if (e.CommandName == "EditProfile")
-
-            {
-                int eid = Convert.ToInt32(e.CommandArgument);
-                Session["EmployeeID"] = eid;
-                Response.Redirect("~/EditProfile.aspx");
-            }
-
-            if (e.CommandName == "RemoveProfile")
-
-            {
-
-                int eid = Convert.ToInt32(e.CommandArgument);
-                Session["EmployeeID"] = eid;
-                objCommon.RemoveEmployee(eid);
-                GetEmployeeList();
-            }
-        }
-
-        protected void GridEmployee_Sorting(object sender, GridViewSortEventArgs e)
-        {
-            DataTable dtrslt = (DataTable)ViewState["dirState"];
-            if (dtrslt.Rows.Count > 0)
-            {
-                if (Convert.ToString(ViewState["sortdr"]) == "Asc")
-                {
-                    dtrslt.DefaultView.Sort = e.SortExpression + " Desc";
-                    ViewState["sortdr"] = "Desc";
-                }
-                else
-                {
-                    dtrslt.DefaultView.Sort = e.SortExpression + " Asc";
-                    ViewState["sortdr"] = "Asc";
-                }
-                GridEmployee.DataSource = dtrslt;
-                GridEmployee.DataBind();
-            }
-        }
-
-        protected void GridEmployee_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-
-        }
+     
     }
 }

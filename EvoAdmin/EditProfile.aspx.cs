@@ -91,18 +91,16 @@ namespace EvoAdmin
                         try
                         {
 
-
-
-                            string Imgname = ddlDesignation.SelectedItem.Text + "_" + txtName.Text;
+                            string Imgname = newfile;
 
                             string path = Server.MapPath(@"~\EmployeeProfile\");
                             System.IO.Directory.CreateDirectory(path);
-                            FileUpProfile.SaveAs(path + @"\" + Imgname + ext);
+                            FileUpProfile.SaveAs(path + @"\" + Imgname);
 
-                            ImageProfile.ImageUrl = @"~\EmployeeProfile\" + Imgname + ext;
+                            ImageProfile.ImageUrl = @"~\EmployeeProfile\" + Imgname ;
                             ImageProfile.Visible = true;
                             lblProfile.Visible = true;
-                            lblProfile.Text = Imgname + ext;
+                            lblProfile.Text = Imgname ;
 
                             //  IdentityPolicyImageUrl = Imgname + ext;
 

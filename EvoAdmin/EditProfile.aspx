@@ -11,9 +11,8 @@
             <div class="filter__row d-flex">
              
                 <asp:Label ID="lblmsg" runat="server"></asp:Label>
-                <div class="row" align="center">
-                    <div class="col m12 s12 l12">
-
+                 <div class="row justify-content-lg-center">
+                     <div class="col-md-6 col-xl-5">
                         <table>
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                 <ContentTemplate>
@@ -60,8 +59,7 @@
                                 <td>Email ID :</td>
                                 <td>
                                     <asp:TextBox ID="txtEmail" runat="server" Text="" Font-Bold="true"></asp:TextBox></td>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmail" ValidationGroup="e"
-                                    SetFocusOnError="true" ErrorMessage="Please Enter Email" ForeColor="Red"></asp:RequiredFieldValidator>
+                              
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ValidationGroup="e"
                                     ForeColor="Red" ErrorMessage="Enter valid Email" Display="Dynamic" ControlToValidate="txtEmail"
                                     SetFocusOnError="True" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
@@ -97,11 +95,11 @@
                         </table>
 
                     </div>
-                </div>
+                
                 <br />
                 <div class="clearfix"></div>
-                <div class="row" align="center">
-                    <div class="col m12 s12 l12">
+              
+                <div class="col-12 text-center order-md-1">
                         <asp:Button runat="server" ID="btnUpdate"  CssClass="bttn bttn-primary bttn-action" ClientIDMode="Static" OnClick="btnUpdate_Click" Text="Update" ValidationGroup="e" />
                     </div>
                 </div>
